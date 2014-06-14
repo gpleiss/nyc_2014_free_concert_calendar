@@ -28,6 +28,11 @@ class Concert():
     return datetime.combine(concert_date, concert_time)
 
 class ConcertCalendar(Calendar):
+  def __init__(self):
+    super(Calendar, self).__init__()
+    self.add('summary', 'NYC Summer 2014 Free Concerts')
+    self.add('prodid', '-//NYC Summer 2014 Free Concerts//github.com/gpleiss')
+
   def add_concert(self, concert):
     event = Event()
     event.add('summary', "Concert: %s" % concert.band)

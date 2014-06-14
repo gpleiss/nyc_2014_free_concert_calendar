@@ -1,4 +1,6 @@
 BEGIN:VCALENDAR
+PRODID:-//NYC Summer 2014 Free Concerts//github.com/gpleiss
+SUMMARY:NYC Summer 2014 Free Concerts
 BEGIN:VEVENT
 SUMMARY:Concert: Mark McGuire\, Marissa Nadler\, Delicate Steve
 DTSTART;VALUE=DATE-TIME:20140604T190000
