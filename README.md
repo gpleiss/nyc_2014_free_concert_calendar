@@ -11,7 +11,7 @@ The calendar itself is stored in the file "concert_calendar.ics"
 - Visit your Google Calendar
 - Click the down arrow by "Other Calendars"
 - Click "Add by URL"
-- Paste in the following URL: "https://raw.githubusercontent.com/gpleiss/nyc_2014_free_concert_calendar/master/concert_calendar.ics" and click "Add Calendar"
+- Paste in the following URL: "https://raw.githubusercontent.com/gpleiss/nyc_2014_free_concert_calendar/master/concert_calendar.ics?nocache" and click "Add Calendar"
 
 ## Generating the calendar via the script
 
