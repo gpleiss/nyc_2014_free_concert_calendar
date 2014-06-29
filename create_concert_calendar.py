@@ -1,8 +1,10 @@
-import re, os
+import re, os, pytz
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event, vText
 
 class Concert():
+  __timezone = pytz.timezone('US/Eastern')
+
   def __init__(self, band, concert_datetime, location):
     self.band = band
     self.concert_datetime = concert_datetime
@@ -19,15 +21,16 @@ class Concert():
     location = concert_info[2]
     return klass(band, concert_datetime, location)
 
-  @staticmethod
-  def __get_concert_datetime(concert_date, concert_time_info):
+  @classmethod
+  def __get_concert_datetime(klass, concert_date, concert_time_info):
     if re.match("\d{1,2}\w\w", concert_time_info):
-      concert_time = datetime.strptime(concert_time_info + " EDT", "%I%p %Z").time()
+      concert_time = datetime.strptime(concert_time_info, "%I%p").time()
     elif re.match("\d{1,2}:\d\d\w\w", concert_time_info):
-      concert_time = datetime.strptime(concert_time_info + " EDT", "%I:%M%p %Z").time()
-    return datetime.combine(concert_date, concert_time)
+      concert_time = datetime.strptime(concert_time_info, "%I:%M%p").time()
     else:
       raise Error('Unable to parse concert time')
+    unlocalized_concert_time = datetime.combine(concert_date, concert_time)
+    return klass.__timezone.localize(unlocalized_concert_time)
 
 class ConcertCalendar(Calendar):
   def __init__(self):
