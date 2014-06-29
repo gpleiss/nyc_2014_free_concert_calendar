@@ -26,6 +26,8 @@ class Concert():
     elif re.match("\d{1,2}:\d\d\w\w", concert_time_info):
       concert_time = datetime.strptime(concert_time_info + " EDT", "%I:%M%p %Z").time()
     return datetime.combine(concert_date, concert_time)
+    else:
+      raise Error('Unable to parse concert time')
 
 class ConcertCalendar(Calendar):
   def __init__(self):
